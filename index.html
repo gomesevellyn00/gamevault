@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">🎮 GameVault</div>
+
+        <div class="nav-acoes">
+            <a href="#biblioteca">Minha biblioteca</a>
+            <button id="abrir-adicionar">+ Adicionar jogo</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div>
+            <p class="tag">SUA BIBLIOTECA GAMER</p>
+
+            <h1>
+                Todos os seus jogos.<br>
+                Em um só lugar.
+            </h1>
+
+            <p class="descricao">
+                Organize os jogos que você joga,
+                já jogou e ainda quer conhecer.
+            </p>
+
+            <a href="#biblioteca" class="botao-principal">
+                Ver biblioteca
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="estatisticas">
+
+            <div class="estatistica">
+                <span id="total-jogos">0</span>
+                <p>Jogos</p>
+            </div>
+
+            <div class="estatistica">
+                <span id="jogando-total">0</span>
+                <p>Jogando</p>
+            </div>
+
+            <div class="estatistica">
+                <span id="finalizados-total">0</span>
+                <p>Finalizados</p>
+            </div>
+
+            <div class="estatistica">
+                <span id="favoritos-total">0</span>
+                <p>Favoritos</p>
+            </div>
+
+        </section>
+
+        <section id="biblioteca">
+
+            <div class="titulo-biblioteca">
+
+                <div>
+                    <p class="tag">GAMEVAULT</p>
+                    <h2>Minha biblioteca</h2>
+                </div>
+
+                <input
+                    type="text"
+                    id="pesquisa"
+                    placeholder="Pesquisar jogo..."
+                >
+
+            </div>
+
+            <div class="filtros">
+
+                <select id="filtro-genero">
+                    <option value="todos">Todos os gêneros</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="RPG">RPG</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Simulação">Simulação</option>
+                    <option value="FPS">FPS</option>
+                </select>
+
+                <select id="filtro-status">
+                    <option value="todos">Todos os status</option>
+                    <option value="Sem status">Sem status</option>
+                    <option value="Quero jogar">Quero jogar</option>
+                    <option value="Jogando">Jogando</option>
+                    <option value="Finalizado">Finalizado</option>
+                </select>
+
+                <select id="ordenacao">
+                    <option value="padrao">Ordem padrão</option>
+                    <option value="nome">Nome A-Z</option>
+                    <option value="nota">Maior nota</option>
+                    <option value="horas">Mais horas jogadas</option>
+                </select>
+
+                <button id="somente-favoritos" class="botao-filtro">
+                    ♡ Favoritos
+                </button>
+
+            </div>
+
+            <div id="lista-jogos" class="lista-jogos"></div>
+
+            <p id="nenhum-resultado" class="nenhum-resultado">
+                Nenhum jogo encontrado.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL DETALHES -->
+
+    <div id="modal" class="modal">
+
+        <div class="modal-conteudo">
+
+            <button id="fechar-modal" class="fechar-modal">
+                ×
+            </button>
+
+            <img
+                id="modal-capa"
+                class="modal-capa"
+                src=""
+                alt=""
+            >
+
+            <div class="modal-info">
+
+                <p id="modal-genero" class="modal-genero"></p>
+
+                <h2 id="modal-nome"></h2>
+
+                <p
+                    id="modal-descricao"
+                    class="modal-descricao"
+                ></p>
+
+                <div class="campo-modal">
+                    <label for="modal-status">Status</label>
+
+                    <select id="modal-status">
+                        <option value="Sem status">Sem status</option>
+                        <option value="Quero jogar">Quero jogar</option>
+                        <option value="Jogando">Jogando</option>
+                        <option value="Finalizado">Finalizado</option>
+                    </select>
+                </div>
+
+                <div class="campo-modal">
+                    <label for="modal-nota">Sua nota</label>
+
+                    <select id="modal-nota">
+                        <option value="0">Sem nota</option>
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+
+                <div class="campo-modal">
+                    <label for="modal-horas">
+                        Horas jogadas
+                    </label>
+
+                    <input
+                        type="number"
+                        id="modal-horas"
+                        min="0"
+                        placeholder="0"
+                    >
+                </div>
+
+                <button id="salvar-jogo" class="salvar-jogo">
+                    Salvar alterações
+                </button>
+
+                <button id="remover-jogo" class="remover-jogo">
+                    Remover da biblioteca
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL ADICIONAR JOGO -->
+
+    <div id="modal-adicionar" class="modal">
+
+        <div class="modal-adicionar-conteudo">
+
+            <button
+                id="fechar-adicionar"
+                class="fechar-modal"
+            >
+                ×
+            </button>
+
+            <p class="tag">NOVO JOGO</p>
+
+            <h2>Adicionar à biblioteca</h2>
+
+            <form id="form-adicionar">
+
+                <label for="novo-nome">Nome</label>
+
+                <input
+                    type="text"
+                    id="novo-nome"
+                    placeholder="Nome do jogo"
+                    required
+                >
+
+                <label for="novo-genero">Gênero</label>
+
+                <select id="novo-genero">
+                    <option value="Terror">Terror</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="RPG">RPG</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Simulação">Simulação</option>
+                    <option value="FPS">FPS</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <label for="novo-ano">Ano</label>
+
+                <input
+                    type="text"
+                    id="novo-ano"
+                    placeholder="Ex.: 2026"
+                >
+
+                <label for="nova-capa">
+                    URL da capa (opcional)
+                </label>
+
+                <input
+                    type="text"
+                    id="nova-capa"
+                    placeholder="https://..."
+                >
+
+                <label for="nova-descricao">
+                    Descrição
+                </label>
+
+                <textarea
+                    id="nova-descricao"
+                    placeholder="Escreva algo sobre o jogo..."
+                ></textarea>
+
+                <button type="submit" class="salvar-jogo">
+                    Adicionar jogo
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <h3>🎮 GameVault</h3>
+        <p>Sua biblioteca gamer pessoal.</p>
+
+        <p class="copyright">
+            © 2026 GameVault
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

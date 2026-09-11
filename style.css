@@ -1,0 +1,716 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0d12;
+    color: #f5f5f5;
+}
+
+nav {
+    background-color: rgba(12, 13, 18, 0.96);
+    padding: 18px 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    border-bottom: 1px solid #242631;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-acoes {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+#abrir-adicionar {
+    border: none;
+    background-color: #696cff;
+    color: white;
+
+    padding: 11px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 600px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #252853,
+            #0c0d12 60%
+        );
+}
+
+.hero > div {
+    max-width: 850px;
+}
+
+.tag {
+    color: #8d91ff;
+
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: bold;
+
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: 64px;
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.descricao {
+    color: #a7a9b5;
+
+    font-size: 19px;
+    line-height: 1.6;
+
+    margin-bottom: 35px;
+}
+
+.botao-principal {
+    display: inline-block;
+
+    background-color: #696cff;
+    color: white;
+
+    padding: 15px 30px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.botao-principal:hover {
+    transform: translateY(-3px);
+    background-color: #7e81ff;
+}
+
+/* ESTATÍSTICAS */
+
+.estatisticas {
+    padding: 50px 8%;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.estatistica {
+    background-color: #171820;
+
+    border: 1px solid #272936;
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.estatistica span {
+    font-size: 34px;
+    font-weight: bold;
+
+    color: #8d91ff;
+}
+
+.estatistica p {
+    color: #999ba7;
+    margin-top: 8px;
+}
+
+/* BIBLIOTECA */
+
+#biblioteca {
+    padding: 80px 8% 100px;
+
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+.titulo-biblioteca {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: end;
+
+    gap: 30px;
+
+    margin-bottom: 25px;
+}
+
+.titulo-biblioteca h2 {
+    font-size: 38px;
+}
+
+#pesquisa {
+    width: 300px;
+
+    padding: 14px 16px;
+
+    background-color: #171820;
+    color: white;
+
+    border: 1px solid #30323d;
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+#pesquisa:focus {
+    border-color: #696cff;
+}
+
+/* FILTROS */
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 35px;
+}
+
+.filtros select,
+.botao-filtro {
+    background-color: #171820;
+    color: white;
+
+    border: 1px solid #30323d;
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.botao-filtro.ativo {
+    background-color: #ff5b76;
+    border-color: #ff5b76;
+}
+
+/* CARDS */
+
+.lista-jogos {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+}
+
+.jogo {
+    background-color: #171820;
+
+    border: 1px solid #272936;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.jogo:hover {
+    transform: translateY(-6px);
+
+    border-color: #696cff;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.jogo-capa {
+    width: 100%;
+    height: 330px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #303461,
+            #171820
+        );
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jogo-capa img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.4s;
+}
+
+.jogo:hover .jogo-capa img {
+    transform: scale(1.04);
+}
+
+.fallback-capa {
+    font-size: 60px;
+}
+
+.jogo-conteudo {
+    padding: 20px;
+}
+
+.jogo h3 {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.genero {
+    color: #9193a0;
+    font-size: 13px;
+}
+
+.status {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    background-color: #282a37;
+    color: #c7c8d0;
+}
+
+.avaliacao {
+    margin-top: 15px;
+    min-height: 20px;
+
+    color: #ffd166;
+}
+
+.horas-jogadas {
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    color: #999ba7;
+}
+
+.jogo-acoes {
+    margin-top: 18px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.detalhes {
+    flex: 1;
+
+    background-color: #696cff;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 11px;
+
+    cursor: pointer;
+}
+
+.detalhes:hover {
+    background-color: #7e81ff;
+}
+
+.favorito {
+    width: 42px;
+
+    border: 1px solid #343643;
+
+    background-color: #23252f;
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.favorito.ativo {
+    color: #ff5b76;
+}
+
+.nenhum-resultado {
+    display: none;
+
+    text-align: center;
+
+    color: #9395a1;
+
+    padding: 60px 0;
+}
+
+/* MODAIS */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.82);
+
+    z-index: 2000;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    width: 100%;
+    max-width: 800px;
+
+    background-color: #171820;
+
+    border: 1px solid #30323d;
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.modal-capa {
+    width: 100%;
+    height: 100%;
+
+    min-height: 520px;
+
+    object-fit: cover;
+
+    background-color: #0f1016;
+}
+
+.modal-info {
+    padding: 40px;
+}
+
+.modal-adicionar-conteudo {
+    width: 100%;
+    max-width: 520px;
+
+    background-color: #171820;
+
+    border: 1px solid #30323d;
+    border-radius: 18px;
+
+    padding: 35px;
+
+    position: relative;
+}
+
+.modal-adicionar-conteudo h2 {
+    margin-bottom: 25px;
+}
+
+.fechar-modal {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    border: none;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    font-size: 28px;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.modal-genero {
+    color: #8d91ff;
+    margin-bottom: 7px;
+}
+
+.modal-info h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.modal-descricao {
+    color: #a6a7b0;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.campo-modal {
+    margin-bottom: 18px;
+}
+
+.campo-modal label,
+#form-adicionar label {
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.campo-modal select,
+.campo-modal input,
+#form-adicionar input,
+#form-adicionar select,
+#form-adicionar textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    border: 1px solid #343643;
+
+    background-color: #0f1016;
+    color: white;
+
+    font-size: 15px;
+
+    margin-bottom: 18px;
+}
+
+#form-adicionar textarea {
+    min-height: 100px;
+    resize: vertical;
+
+    font-family: Arial, sans-serif;
+}
+
+.salvar-jogo {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 9px;
+
+    background-color: #696cff;
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.salvar-jogo:hover {
+    background-color: #7e81ff;
+}
+
+.remover-jogo {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 13px;
+
+    border: 1px solid #ff5b76;
+    border-radius: 9px;
+
+    background-color: transparent;
+    color: #ff768d;
+
+    cursor: pointer;
+}
+
+.remover-jogo:hover {
+    background-color: #ff5b76;
+    color: white;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #090a0e;
+
+    border-top: 1px solid #242631;
+
+    text-align: center;
+
+    padding: 50px 20px;
+}
+
+footer p {
+    color: #8c8e99;
+    margin-top: 10px;
+}
+
+.copyright {
+    margin-top: 25px;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-acoes {
+        flex-direction: column;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .estatisticas {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 20px;
+    }
+
+    #biblioteca {
+        padding: 60px 20px;
+    }
+
+    .titulo-biblioteca {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #pesquisa {
+        width: 100%;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    .filtros select,
+    .botao-filtro {
+        width: 100%;
+    }
+
+    .lista-jogos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .jogo-capa {
+        height: 260px;
+    }
+
+    .modal-conteudo {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+
+    .modal-capa {
+        height: 420px;
+        min-height: 0;
+    }
+
+    .modal-info {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .lista-jogos {
+        grid-template-columns: 1fr;
+    }
+
+    .jogo-capa {
+        height: 420px;
+    }
+}
